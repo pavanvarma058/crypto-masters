@@ -1,3 +1,6 @@
+<?php
+    require_once "./classes/CryptoConverter.php";
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -16,7 +19,11 @@
         $amount = $_POST["amount"];
         $crypto = $_POST["crypto"];
 
+        $converter = new CryptoConverter($crypto);
+        $result = $converter->convert($amount);
+
         echo  "<p>You want to convert $amount $crypto.</p>";
+        echo "<h2>You have USD $result</h2>";
     }else{
         echo "<h2> Oops!, It didn't work</h2>";
     }
